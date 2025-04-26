@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Bài Tập JavaScript Cơ Bản</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Bài Tập JavaScript</h1>
+    
+    <!-- Bài 1: Tính tiền lương nhân viên -->
+    <div class="exercise">
+        <h2>Bài 1: Tính tiền lương nhân viên</h2>
+        <p>Lương 1 ngày: 100.000 VND</p>
+        <label>Số ngày làm việc: <input type="number" id="workingDays" min="0"></label>
+        <button onclick="calculateSalary()">Tính lương</button>
+        <p id="salaryResult" class="result"></p>
+    </div>
+    
+    <!-- Bài 2: Tính giá trị trung bình -->
+    <div class="exercise">
+        <h2>Bài 2: Tính giá trị trung bình</h2>
+        <p>Nhập 5 số thực:</p>
+        <div class="input-group">
+            <input type="number" id="num1" step="any">
+            <input type="number" id="num2" step="any">
+            <input type="number" id="num3" step="any">
+            <input type="number" id="num4" step="any">
+            <input type="number" id="num5" step="any">
+        </div>
+        <button onclick="calculateAverage()">Tính trung bình</button>
+        <p id="averageResult" class="result"></p>
+    </div>
+    
+    <!-- Bài 3: Quy đổi tiền USD sang VND -->
+    <div class="exercise">
+        <h2>Bài 3: Quy đổi tiền USD sang VND</h2>
+        <p>Tỷ giá: 23,500 VND/USD</p>
+        <label>Số USD: <input type="number" id="usdAmount" min="0" step="any"></label>
+        <button onclick="convertCurrency()">Quy đổi</button>
+        <p id="currencyResult" class="result"></p>
+    </div>
+    
+    <!-- Bài 4: Tính diện tích, chu vi hình chữ nhật -->
+    <div class="exercise">
+        <h2>Bài 4: Tính diện tích, chu vi hình chữ nhật</h2>
+        <div class="input-group">
+            <label>Chiều dài: <input type="number" id="length" min="0" step="any"></label>
+            <label>Chiều rộng: <input type="number" id="width" min="0" step="any"></label>
+        </div>
+        <button onclick="calculateRectangle()">Tính toán</button>
+        <p id="rectangleResult" class="result"></p>
+    </div>
+    
+    <!-- Bài 5: Tính tổng 2 chữ số -->
+    <div class="exercise">
+        <h2>Bài 5: Tính tổng 2 chữ số</h2>
+        <label>Nhập số có 2 chữ số: <input type="number" id="twoDigitNumber" min="10" max="99"></label>
+        <button onclick="sumTwoDigits()">Tính tổng</button>
+        <p id="sumResult" class="result"></p>
+    </div>
+
+    <script>
+        // Bài 1: Tính tiền lương nhân viên
+        function calculateSalary() {
+            const workingDays = parseInt(document.getElementById('workingDays').value);
+            const DAILY_SALARY = 100000;
+            
+            if (isNaN(workingDays) || workingDays < 0) {
+                document.getElementById('salaryResult').textContent = "Vui lòng nhập số ngày hợp lệ!";
+                return;
+            }
+            
+            const totalSalary = DAILY_SALARY * workingDays;
+            document.getElementById('salaryResult').textContent = 
+                `Tiền lương: ${totalSalary.toLocaleString('vi-VN')} VND`;
+        }
+        
+        // Bài 2: Tính giá trị trung bình
+        function calculateAverage() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const num3 = parseFloat(document.getElementById('num3').value);
+            const num4 = parseFloat(document.getElementById('num4').value);
+            const num5 = parseFloat(document.getElementById('num5').value);
+            
+            if (isNaN(num1) || isNaN(num2) || isNaN(num3) || isNaN(num4) || isNaN(num5)) {
+                document.getElementById('averageResult').textContent = "Vui lòng nhập đủ 5 số hợp lệ!";
+                return;
+            }
+            
+            const average = (num1 + num2 + num3 + num4 + num5) / 5;
+            document.getElementById('averageResult').textContent = 
+                `Giá trị trung bình: ${average.toFixed(2)}`;
+        }
+        
+        // Bài 3: Quy đổi tiền USD sang VND
+        function convertCurrency() {
+            const usdAmount = parseFloat(document.getElementById('usdAmount').value);
+            const EXCHANGE_RATE = 23500;
+            
+            if (isNaN(usdAmount) || usdAmount < 0) {
+                document.getElementById('currencyResult').textContent = "Vui lòng nhập số USD hợp lệ!";
+                return;
+            }
+            
+            const vndAmount = usdAmount * EXCHANGE_RATE;
+            document.getElementById('currencyResult').textContent = 
+                `${usdAmount} USD = ${vndAmount.toLocaleString('vi-VN')} VND`;
+        }
+        
+        // Bài 4: Tính diện tích, chu vi hình chữ nhật
+        function calculateRectangle() {
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            
+            if (isNaN(length) || isNaN(width) || length < 0 || width < 0) {
+                document.getElementById('rectangleResult').textContent = "Vui lòng nhập chiều dài và rộng hợp lệ!";
+                return;
+            }
+            
+            const area = length * width;
+            const perimeter = (length + width) * 2;
+            document.getElementById('rectangleResult').textContent = 
+                `Diện tích: ${area.toFixed(2)} | Chu vi: ${perimeter.toFixed(2)}`;
+        }
+        
+        // Bài 5: Tính tổng 2 chữ số
+        function sumTwoDigits() {
+            const number = parseInt(document.getElementById('twoDigitNumber').value);
+            
+            if (isNaN(number) || number < 10 || number > 99) {
+                document.getElementById('sumResult').textContent = "Vui lòng nhập số có 2 chữ số (10-99)!";
+                return;
+            }
+            
+            const tens = Math.floor(number / 10);
+            const units = number % 10;
+            const sum = tens + units;
+            document.getElementById('sumResult').textContent = 
+                `Tổng 2 chữ số của ${number} là: ${tens} + ${units} = ${sum}`;
+        }
+    </script>
+</body>
+</html>
