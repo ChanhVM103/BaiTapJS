@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống Quản lý Tích hợp</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>HỆ THỐNG QUẢN LÝ TÍCH HỢP</h1>
+    
+    <div class="container">
+        <!-- Quản lý Tuyển sinh -->
+        <div class="card">
+            <h2>QUẢN LÝ TUYỂN SINH</h2>
+            <div class="form-group">
+                <label for="benchmark">Điểm chuẩn:</label>
+                <input type="number" id="benchmark" step="0.1" min="0">
+            </div>
+            
+            <div class="form-group">
+                <label for="subject1">Điểm môn 1:</label>
+                <input type="number" id="subject1" step="0.1" min="0" max="10">
+            </div>
+            
+            <div class="form-group">
+                <label for="subject2">Điểm môn 2:</label>
+                <input type="number" id="subject2" step="0.1" min="0" max="10">
+            </div>
+            
+            <div class="form-group">
+                <label for="subject3">Điểm môn 3:</label>
+                <input type="number" id="subject3" step="0.1" min="0" max="10">
+            </div>
+            
+            <div class="form-group">
+                <label for="area">Khu vực (A/B/C/X):</label>
+                <input type="text" id="area" maxlength="1">
+            </div>
+            
+            <div class="form-group">
+                <label for="object">Đối tượng (1/2/3/0):</label>
+                <input type="number" id="object" min="0" max="3">
+            </div>
+            
+            <button id="calculateAdmission">Tính kết quả</button>
+            
+            <div id="admissionResult" class="result hidden"></div>
+        </div>
+
+        <!-- Tính Thuế Thu nhập cá nhân -->
+        <div class="card">
+            <h2>TÍNH THUẾ THU NHẬP</h2>
+            <div class="form-group">
+                <label for="fullName">Họ tên:</label>
+                <input type="text" id="fullName">
+            </div>
+            
+            <div class="form-group">
+                <label for="income">Tổng thu nhập năm (triệu):</label>
+                <input type="number" id="income" min="0">
+            </div>
+            
+            <div class="form-group">
+                <label for="dependents">Số người phụ thuộc:</label>
+                <input type="number" id="dependents" min="0">
+            </div>
+            
+            <button id="calculateTax">Tính thuế</button>
+            
+            <div id="taxResult" class="result hidden"></div>
+        </div>
+
+        <!-- Hóa đơn Cáp -->
+        <div class="card">
+            <h2>HÓA ĐƠN CÁP</h2>
+            <div class="form-group">
+                <label for="customerId">Mã khách hàng:</label>
+                <input type="text" id="customerId">
+            </div>
+            
+            <div class="form-group">
+                <label for="customerType">Loại khách hàng:</label>
+                <select id="customerType">
+                    <option value="resident">Nhà dân</option>
+                    <option value="business">Doanh nghiệp</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="premiumChannels">Số kênh cao cấp:</label>
+                <input type="number" id="premiumChannels" min="0">
+            </div>
+            
+            <div id="businessConnectionsGroup" class="form-group hidden">
+                <label for="connections">Số kết nối:</label>
+                <input type="number" id="connections" min="0">
+            </div>
+            
+            <button id="calculateBill">Tính hóa đơn</button>
+            
+            <div id="billResult" class="result hidden"></div>
+        </div>
+
+        <!-- Tính Tiền điện -->
+        <div class="card">
+            <h2>TÍNH TIỀN ĐIỆN</h2>
+            <div class="form-group">
+                <label for="customerName">Tên khách hàng:</label>
+                <input type="text" id="customerName">
+            </div>
+            
+            <div class="form-group">
+                <label for="electricityUsage">Số Kw tiêu thụ:</label>
+                <input type="number" id="electricityUsage" min="0">
+            </div>
+            
+            <button id="calculateElectricity">Tính tiền điện</button>
+            
+            <div id="electricityResult" class="result hidden"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
